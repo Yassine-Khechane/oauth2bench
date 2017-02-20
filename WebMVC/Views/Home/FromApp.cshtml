@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h3>@ViewBag.Message</h3>
+
+<script>
+    var token = '@ViewBag.Token';
+</script>
+
+@if (ViewBag.ValidationError!=null) {
+<h4>Validation error</h4>
+<pre>
+@ViewBag.ValidationError
+</pre>
+}
+
+<h4>Token</h4>
+<pre>
+@ViewBag.jsToken
+</pre>
+
+
+@if (ViewBag.ClaimsPrincipal!=null) {
+<h4>Claims</h4>
+<dl>
+    @foreach (var claim in ViewBag.ClaimsPrincipal.Claims)
+    {
+        <dt>
+            @claim.Type
+        </dt>
+        <dd>
+            @claim.Value
+        </dd>
+    }
+</dl>
+}
